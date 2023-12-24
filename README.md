@@ -7,7 +7,7 @@
 3. Import database ke dalam phpmyadmin (File SQL berada dalam project root).
 4. Buka cmd pada project root
 5. Ketikan `composer update` lalu enter dan tunggu hingga selesai.
-6. Sesuaikan 'Config/database.php' seusuai host pada laptop masing masing
+6. Sesuaikan `Config/database.php` seusuai host pada laptop masing masing
 
 ## Cara menjalankan
 
