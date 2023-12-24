@@ -14,6 +14,10 @@
 1. Buka browser dan ketikan url `http://localhost/ff-gis` anda akan diarahkan pada halaman sign in
 2. Masukan username dan password
 
+## Guest Dashboard
+
+`http://localhost/ff-gis/GIS`
+
 ## User Account
 
 - Role Administrator
@@ -29,3 +33,5 @@
   Username : jhon@gmail.com
   Password : 123
 ```
+
+## Screenshoot
