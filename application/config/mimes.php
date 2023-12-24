@@ -166,7 +166,7 @@ return array(
 	'vcf'	=>	'text/x-vcard',
 	'srt'	=>	array('text/srt', 'text/plain'),
 	'vtt'	=>	array('text/vtt', 'text/plain'),
-	'ico'	=>	array('image/x-icon', 'image/x-ico', 'image/vnd.microsoft.icon'),
+	'ico'	=>	array('image/ico', 'image/x-icon', 'image/x-ico', 'image/vnd.microsoft.icon'),
 	'odc'	=>	'application/vnd.oasis.opendocument.chart',
 	'otc'	=>	'application/vnd.oasis.opendocument.chart-template',
 	'odf'	=>	'application/vnd.oasis.opendocument.formula',
