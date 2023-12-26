@@ -26,16 +26,3 @@
   Username : adyshaputra@gmail.com
   Password : 12345
 ```
-
-- Role Guest
-
-```
-  Username : jhon@gmail.com
-  Password : 123
-```
-
-## Screenshoot
-
-![Guest Dashboard](/Guest-Dashboard.png)
-![Admin Dashboard](/Admin-Dashboard.png)
-![Page 1](/Page-1.png)

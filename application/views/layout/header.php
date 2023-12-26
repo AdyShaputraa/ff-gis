@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="vendor/almasaeed2010/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/leaflet/leaflet.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') ?>">
     <style>
         .select2-selection__rendered {
             line-height: 31px !important;
@@ -74,26 +75,41 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
+                        <li class="nav-item nav-tracking">
                             <a href="<?= base_url('Dashboard') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <?php if ($this->session->userdata('isAdmin') == 1) { ?>
                         <li class="nav-item">
-                            <a href="<?= base_url('FloraFauna') ?>" class="nav-link">
-                                <i class="nav-icon fas fa-paw"></i>
-                                <p>Flora & Fauna</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-database"></i>
+                                <p>
+                                    Master Data
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview nav-treeview-tracking">
+                                <li class="nav-item nav-tracking-treeview">
+                                    <a href="<?= base_url('Fauna') ?>" class="nav-link">
+                                        <i class="fas fa-paw nav-icon"></i>
+                                        <p>Fauna</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-tracking-treeview">
+                                    <a href="<?= base_url('Flora') ?>" class="nav-link">
+                                        <i class="fas fa-tree nav-icon"></i>
+                                        <p>Flora</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item nav-tracking">
                             <a href="<?= base_url('User') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-user-alt"></i>
-                                <p>User</p>
+                                <p>User Configuration</p>
                             </a>
                         </li>
-                        <?php } ?>
                     </ul>
                 </nav>
             </div>

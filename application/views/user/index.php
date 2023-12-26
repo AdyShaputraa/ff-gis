@@ -4,12 +4,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>User</h1>
+                        <h1>User Configuration</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-                            <li class="breadcrumb-item active">User</li>
+                            <li class="breadcrumb-item active">User Configuration</li>
                         </ol>
                     </div>
                 </div>
@@ -19,9 +19,9 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">User Data</h3>
+                    <h3 class="card-title">User Configuration Data</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool btn-create-user" title="Tambah">
+                        <button type="button" class="btn btn-tool btn-create-user" title="Create">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
@@ -34,7 +34,6 @@
                                 <th>UUID</th>
                                 <th>Name</th>
                                 <th>Username</th>
-                                <th>isAdmin</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -47,7 +46,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h4 class="modal-title">Tambah User</h4>
+                        <h4 class="modal-title">Form Add User</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -56,24 +55,20 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control create-name" placeholder="Masukan Nama" required>
+                                <input type="text" name="name" class="form-control create-name" placeholder="Enter Nama" required>
                             </div>
                             <div class="form-group">
                                 <label>Username</label>
-                                <input type="email" name="username" class="form-control create-username"  placeholder="Masukan Username" required>
+                                <input type="email" name="username" class="form-control create-username"  placeholder="Enter Username" required>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control create-password" placeholder="Masukan Password" required>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" name="isAdmin" class="form-check-input" id="check-if-admin" value="1">
-                                <label class="form-check-label" for="check-if-admin">Centang jika user ini adalah admin</label>
+                                <input type="password" name="password" class="form-control create-password" placeholder="Enter Password" required>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>
@@ -84,7 +79,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h4 class="modal-title">Ubah User</h4>
+                        <h4 class="modal-title">Form Update User</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -94,20 +89,16 @@
                             <input type="hidden" name="uuid" class="update-uuid" readonly>
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control update-name" placeholder="Masukan Nama" required>
+                                <input type="text" name="name" class="form-control update-name" placeholder="Enter Nama" required>
                             </div>
                             <div class="form-group">
                                 <label>Username</label>
-                                <input type="email" name="username" class="form-control update-username"  placeholder="Masukan Username" required>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" name="isAdmin" class="form-check-input update-isAdmin" id="check-if-admin" value="1">
-                                <label class="form-check-label" for="check-if-admin">Centang jika user ini adalah admin</label>
+                                <input type="email" name="username" class="form-control update-username"  placeholder="Enter Username" required>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Ubah</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
@@ -118,7 +109,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-danger">
-                        <h4 class="modal-title">Reset Password</h4>
+                        <h4 class="modal-title">Form Reset Password</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -128,11 +119,11 @@
                             <input type="hidden" name="uuid" class="form-control uuid-reset-password" readonly>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control reset-password" placeholder="Masukan Password" required>
+                                <input type="password" name="password" class="form-control reset-password" placeholder="Enter Password" required>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-danger">Reset</button>
                         </div>
                     </form>
@@ -160,21 +151,11 @@
                 { "data" : 'uuid', "visible": false },
                 { "data" : "name", "sClass": "text-center" },
                 { "data" : "username", "sClass": "text-center" },
-                {
-                    "sClass": "text-center",
-                    render : function (data, type, row) {
-                        if (row.isAdmin == 0) {
-                            return '<i class="fas fa-times"></i>';
-                        } else {
-                            return '<i class="fas fa-check"></i>';
-                        }
-                    }
-                },
                 { 
                     "data"    : null,
                     "sClass": "text-center",
                     render : function (data, type, row) {
-                        return "<a href='#' class='btn-resetPassword' title='Change Password'><i class='fas fa-lock'></i></a>&nbsp;<a href='#' class='btn-editUser' title='Edit User'><i class='fas fa-pen'></i></a>&nbsp;<a href='#' class='btn-deleteUser' title='Delete User'><i class='fas fa-trash'></i></a>";
+                        return "<a href='#' class='btn-resetPassword' title='Reset Password'><i class='fas fa-lock'></i></a>&nbsp;<a href='#' class='btn-editUser' title='Update User'><i class='fas fa-pen'></i></a>&nbsp;<a href='#' class='btn-deleteUser' title='Delete User'><i class='fas fa-trash'></i></a>";
                     }
                 }
             ],
@@ -257,12 +238,6 @@
             $('.update-uuid').val(data[0].uuid);
             $('.update-name').val(data[0].name);
             $('.update-username').val(data[0].username);
-            if (data[0].isAdmin == 0) {
-                $('.update-isAdmin').prop('checked', false);
-            } else {
-                $('.update-isAdmin').prop('checked', true);
-            }
-            
         });
 
         $('.formUpdateUser').submit(function (e) {

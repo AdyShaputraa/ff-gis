@@ -12,7 +12,109 @@
 
         <section class="content">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Fauna IUCN Status</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="small-box bg-success">
+                                        <div class="inner">
+                                            <h3><?= $totalFaunaDilindungi; ?></h3>
+                                            <h6>Total Dilindungi</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="small-box bg-info">
+                                        <div class="inner">
+                                            <h3><?= $totalFaunaTidakDilindungi; ?></h3>
+                                            <h6>Total Tidak Dilindungi</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="small-box bg-primary">
+                                        <div class="inner">
+                                            <h3><?= $totalFaunaLeastConcern; ?></h3>
+                                            <h6>Total Least Concern</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="small-box bg-warning">
+                                        <div class="inner">
+                                            <h3><?= $totalFaunaNearThreatned; ?></h3>
+                                            <h6>Total Near Threatned</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="small-box bg-danger">
+                                        <div class="inner">
+                                            <h3><?= $totalFaunaVulnerable; ?></h3>
+                                            <h6>Total Vulnerable</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Flora IUCN Status</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="small-box bg-success">
+                                        <div class="inner">
+                                            <h3><?= $totalFloraDilindungi; ?></h3>
+                                            <h6>Total Dilindungi</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="small-box bg-info">
+                                        <div class="inner">
+                                            <h3><?= $totalFloraTidakDilindungi; ?></h3>
+                                            <h6>Total Tidak Dilindungi</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="small-box bg-primary">
+                                        <div class="inner">
+                                            <h3><?= $totalFloraLeastConcern; ?></h3>
+                                            <h6>Total Least Concern</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="small-box bg-warning">
+                                        <div class="inner">
+                                            <h3><?= $totalFloraNearThreatned; ?></h3>
+                                            <h6>Total Near Threatned</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="small-box bg-danger">
+                                        <div class="inner">
+                                            <h3><?= $totalFloraVulnerable; ?></h3>
+                                            <h6>Total Vulnerable</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3 class="totalFlora">0</h3>
@@ -31,13 +133,22 @@
                             <i class="fas fa-paw"></i>
                         </div>
                     </div>
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3 class="totalCagarAlam">0</h3>
+                            <p>Total Cagar Alam / Konservasi</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-map-pin"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="fas fa-chart-pie mr-1"></i>
-                                Grafik
+                                Summary Flora & Fauna
                             </h3>
                             <div class="card-tools">
                                 <ul class="nav nav-pills ml-auto">
@@ -73,7 +184,6 @@
                 <div class="card-footer"></div>
             </div>
         </section>
-        
     </div>
 <?php $this->load->view('layout/footer.php'); ?>
 <script>
@@ -91,14 +201,12 @@
                     if (response.code == 200) {
                         $('.totalFlora').html(response.total);
                         totalFlora = response.total;
-                        chart();
                     }
                 },
                 error : function(error) {
                     $('.totalFlora').html('error');
                 }
             });
-
             
             $.ajax({
                 url: '<?= base_url("Dashboard/countingFauna"); ?>',
@@ -108,17 +216,35 @@
                     if (response.code == 200) {
                         $('.totalFauna').html(response.total);
                         totalFauna = response.total;
-                        chart();
                     }
                 },
                 error : function(error) {
                     $('.totalFauna').html('error');
                 }
             });
+            
+            $.ajax({
+                url: '<?= base_url("Dashboard/countingCagarAlam"); ?>',
+                type: 'GET',
+                dataType: 'JSON',
+                success : function(response) {
+                    if (response.code == 200) {
+                        $('.totalCagarAlam').html(response.total);
+                    }
+                },
+                error : function(error) {
+                    $('.totalCagarAlam').html('error');
+                }
+            });
         }
 
+        setTimeout(function() { 
+            chart();
+        }, 2000);
+        
+
         function chart() {
-            var barChartCanvas = document.getElementById('bar-chart-canvas').getContext('2d');
+            var barChartCanvas = document.getElementById('bar-chart-canvas');
             var barChartData = {
                 labels: ['Total Flora & Fauna'],
                 datasets: [
@@ -159,9 +285,11 @@
                     x: {
                         stacked: true,
                     },
-                    y: {
-                        stacked: true
-                    }
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
             }
             var barChart = new Chart(barChartCanvas, {
@@ -175,7 +303,6 @@
                 labels: [
                     'Flora',
                     'Fauna',
-                    'Mail-Order Sales'
                 ],
                 datasets: [
                     {
@@ -200,7 +327,10 @@
         }
 
         function getMaps() {
-            var map = L.map('mapid').setView([-7.0003004,109.9764546], 7);
+            var map = L.map('mapid', {
+                minZoom: 7,
+                maxZoom: 13
+            }).setView([-7.0003004,109.9764546], 7);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
@@ -220,26 +350,54 @@
                 }).addTo(map);
             });
 
-            $.getJSON("<?= base_url('Dashboard/mapping') ?>", function(data) {
+            $.getJSON("<?= base_url('Dashboard/mappingFauna') ?>", function(data) {
                 $.each(data, function(i, field) {
                     var latitude = parseFloat(data[i].latitude);
-                    var longitude = parseFloat(data[i].longitude);
+                    var latitude = parseFloat(data[i].latitude);
+                    var longtitude = parseFloat(data[i].longtitude);
+                    var url = '<?= base_url('Detail/fauna/') ?>' + data[i].uuid;
                     var image = data[i].image;
                     var icon = L.icon({
                         iconUrl: data[i].icon,
-                        iconSize: [30,30]
+                        iconSize: [50,50]
                     });
-                    var detail = "<img src='"+ image + "' style='width: 100px; height: 100px;'>";
-                        detail += "<hr>Type : " + data[i].type;
-                        detail += "<br/>Nama : " + data[i].name;
-                        detail += "<br/>Description : " + data[i].description;
-                        logMarker = L.marker([latitude, longitude],{ icon: icon}).addTo(myFeatureGroup).bindPopup(detail);
+                    var detail = "<img src='"+ image + "' style='width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;'>";
+                        detail += "<br/><span style='font-size: 23px;'><b>" + data[i].name + "</b></span>";
+                        detail += "<hr><span>" + data[i].description + "</span>";
+                        detail += "<br/><br/>Location : <b>" + data[i].location + "</b>";
+                        detail += "<br/><br/><a href='" + url + "' target='_blank'><button class='btn btn-xs btn-primary'>More Information</button></a>";
+                        logMarker = L.marker([latitude, longtitude],{ icon: icon}).addTo(myFeatureGroup).bindPopup(detail);
                         logMarker.on('mouseover', function(e) {
                             this.openPopup();
                         });
 
-                        logMarker.on('mouseout', function(e) {
-                            this.closePopup();
+                        logMarker.on('click', function(e) {
+                            this.openPopup();
+                        });
+
+                        logMarker.id = data[i].uuid;
+                });
+            });
+
+            $.getJSON("<?= base_url('Dashboard/mappingFlora') ?>", function(data) {
+                $.each(data, function(i, field) {
+                    var latitude = parseFloat(data[i].latitude);
+                    var latitude = parseFloat(data[i].latitude);
+                    var longtitude = parseFloat(data[i].longtitude);
+                    var url = '<?= base_url('Detail/flora/') ?>' + data[i].uuid;
+                    var image = data[i].image;
+                    var icon = L.icon({
+                        iconUrl: data[i].icon,
+                        iconSize: [50,50]
+                    });
+                    var detail = "<img src='"+ image + "' style='width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;'>";
+                        detail += "<br/><span style='font-size: 23px;'><b>" + data[i].name + "</b></span>";
+                        detail += "<hr><span>" + data[i].description + "</span>";
+                        detail += "<br/><br/>Location : <b>" + data[i].location + "</b>";
+                        detail += "<br/><br/><a href='" + url + "' target='_blank'><button class='btn btn-xs btn-primary'>More Information</button></a>";
+                        logMarker = L.marker([latitude, longtitude],{ icon: icon}).addTo(myFeatureGroup).bindPopup(detail);
+                        logMarker.on('mouseover', function(e) {
+                            this.openPopup();
                         });
 
                         logMarker.on('click', function(e) {

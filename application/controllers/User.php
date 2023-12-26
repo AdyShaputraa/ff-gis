@@ -6,7 +6,7 @@ class User extends CI_Controller {
         $this->load->model('m_data');
 
         if (!empty($this->session->userdata('isLogin') == FALSE)) {
-            $this->session->set_flashdata('failed', 'Sesi anda habis, silahkan sign in kembali.');
+            $this->session->set_flashdata('failed', 'Your session has expired, please sign in again.');
             redirect(base_url('Auth'));
         }
     }
@@ -22,11 +22,10 @@ class User extends CI_Controller {
                 'name' => $this->input->post('name'),
                 'username' => $this->input->post('username'),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT, array('cost' => 10)),
-                'isAdmin' => empty($this->input->post('isAdmin')) ? 0 : 1,
                 'createdAt' => date('Y-m-d H:i:s')
             );
             $this->m_data->save($data, 'user');
-            echo json_encode(array('code' => '201', 'message' => 'User berhasil ditambah.'));
+            echo json_encode(array('code' => '201', 'message' => 'Successfully adding data.'));
         } catch (Exception $e) {
             echo json_encode(array('code' => '500', 'message' => $e->getMessage()));
         }
@@ -35,11 +34,11 @@ class User extends CI_Controller {
     public function read() {
         $rows = $this->m_data->getRows(
             $_POST,
-            array(null, 'uuid', 'name', 'username', 'isAdmin', 'createdAt'),
+            array(null, 'uuid', 'name', 'username', 'createdAt'),
             array('name', 'username'),
             array('createdAt' => 'ASC'),
             'user',
-            'uuid, name, username, isAdmin, createdAt',
+            'uuid, name, username, createdAt',
         );
 
         $data = array();
@@ -51,21 +50,20 @@ class User extends CI_Controller {
                 'uuid' => $i->uuid,
                 'name' => $i->name,
                 'username' => $i->username,
-                'isAdmin' => $i->isAdmin,
             );
             $data[] = $row;
         }
 
         $result = array(
             "draw" => $_POST['draw'],
-            "recordsTotal" => $this->m_data->countAll('SELECT uuid, name, username, isAdmin, createdAt FROM user ORDER BY createdAt ASC'),
+            "recordsTotal" => $this->m_data->countAll('SELECT uuid, name, username, createdAt FROM user ORDER BY createdAt ASC'),
             "recordsFiltered" => $this->m_data->countFiltered(
                 $_POST,
-                array(null, 'uuid', 'name', 'username', 'isAdmin', 'createdAt'),
+                array(null, 'uuid', 'name', 'username', 'createdAt'),
                 array('name', 'username'),
                 array('createdAt' => 'ASC'),
                 'user',
-                'uuid, name, username, isAdmin, createdAt',
+                'uuid, name, username, createdAt',
             ),
             "data" => $data
         );
@@ -77,7 +75,6 @@ class User extends CI_Controller {
             $data = array(
                 'name' => $this->input->post('name'),
                 'username' => $this->input->post('username'),
-                'isAdmin' => empty($this->input->post('isAdmin')) ? 0 : 1,
                 'updatedAt' => date('Y-m-d H:i:s')
             );
             $this->m_data->update(
@@ -85,7 +82,7 @@ class User extends CI_Controller {
                 $data,
                 'user'
             );
-            echo json_encode(array('code' => '200', 'message' => 'User berhasil diubah.'));
+            echo json_encode(array('code' => '200', 'message' => 'Successfully updating data.'));
         } catch (Exception $e) {
             echo json_encode(array('code' => '500', 'message' => $e->getMessage()));
         }
@@ -100,7 +97,7 @@ class User extends CI_Controller {
                 ),
                 'user'
             );
-            echo json_encode(array('code' => '200', 'message' => 'User berhasil dihapus.'));
+            echo json_encode(array('code' => '200', 'message' => 'Successfully deleting data.'));
         } catch (Exception $e) {
             echo json_encode(array('code' => '500', 'message' => $e->getMessage()));
         }
@@ -119,7 +116,7 @@ class User extends CI_Controller {
                 $data,
                 'user'
             );
-            echo json_encode(array('code' => '200', 'message' => 'Berhasil me-reset password.'));
+            echo json_encode(array('code' => '200', 'message' => 'Password reset successfully.'));
         } catch (Exception $e) {
             echo json_encode(array('code' => '500', 'message' => $e->getMessage()));
         }

@@ -57,10 +57,10 @@
             <?php if ($this->session->flashdata('success')) {?>
                 const messages = <?= json_encode($this->session->flashdata('success')) ?>;
                 Swal.fire({
-                    title: 'Berhasil',
+                    title: 'Success',
                     text: messages,
                     type: 'success',
-                    confirmButtonText: 'Tutup',
+                    confirmButtonText: 'Close',
                     confirmButtonColor: '#3085d6',
                     allowOutsideClick: false
                 });
@@ -69,10 +69,10 @@
             <?php if ($this->session->flashdata('failed')) {?>
                 const messages = <?= json_encode($this->session->flashdata('failed')) ?>;
                 Swal.fire({
-                    title: 'Gagal',
+                    title: 'Failed',
                     text: messages,
                     type: 'error',
-                    confirmButtonText: 'Tutup',
+                    confirmButtonText: 'Close',
                     confirmButtonColor: '#3085d6',
                     allowOutsideClick: false
                 });
