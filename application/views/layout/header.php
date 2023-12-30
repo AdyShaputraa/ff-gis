@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GIS</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="vendor/almasaeed2010/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="vendor/almasaeed2010/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="vendor/almasaeed2010/adminlte/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="vendor/almasaeed2010/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/plugins/select2/css/select2.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/leaflet/leaflet.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') ?>">
@@ -64,7 +64,7 @@
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?= base_url('vendor/almasaeed2010/adminlte/dist/img/user2-160x160.jpg') ?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">
@@ -75,12 +75,12 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item nav-tracking">
+                        <li class="nav-item">
                             <a href="<?= base_url('Dashboard') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
-                        </li>
+                        </li>   
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-database"></i>
@@ -89,22 +89,40 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview nav-treeview-tracking">
-                                <li class="nav-item nav-tracking-treeview">
-                                    <a href="<?= base_url('Fauna') ?>" class="nav-link">
-                                        <i class="fas fa-paw nav-icon"></i>
-                                        <p>Fauna</p>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url('Provinces') ?>" class="nav-link">
+                                        <i class="fas fa-circle nav-icon"></i>
+                                        <p>Provinces</p>
                                     </a>
                                 </li>
-                                <li class="nav-item nav-tracking-treeview">
-                                    <a href="<?= base_url('Flora') ?>" class="nav-link">
-                                        <i class="fas fa-tree nav-icon"></i>
-                                        <p>Flora</p>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('Type/fauna') ?>" class="nav-link">
+                                        <i class="fas fa-circle nav-icon"></i>
+                                        <p>Fauna Type</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url('Type/flora') ?>" class="nav-link">
+                                        <i class="fas fa-circle nav-icon"></i>
+                                        <p>Flora Type</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item nav-tracking">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Fauna') ?>" class="nav-link">
+                                <i class="fas fa-paw nav-icon"></i>
+                                <p>Fauna</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Flora') ?>" class="nav-link">
+                                <i class="fas fa-tree nav-icon"></i>
+                                <p>Flora</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= base_url('User') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-user-alt"></i>
                                 <p>User Configuration</p>
