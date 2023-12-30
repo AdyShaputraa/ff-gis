@@ -170,8 +170,8 @@
             e.preventDefault();
             var form = this;
             Swal.fire({
-                title: 'Tunggu',
-                text: 'Apakah anda yakin akan menambahkan user ?',
+                title: 'Wait...',
+                text: 'Are you sure you want to add this data ?',
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -188,7 +188,7 @@
                         success : function(response) {
                             if (response.code == 201) {
                                 Swal.fire({
-                                    title: 'Berhasil',
+                                    title: 'Success',
                                     text: response.message,
                                     type: 'success',
                                     showCancelButton: false,
@@ -204,7 +204,7 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    title: 'Gagal',
+                                    title: 'Failed',
                                     text: response.message,
                                     type: 'error',
                                     showCancelButton: false,
@@ -216,7 +216,7 @@
                         },
                         error : function(error) {
                             Swal.fire({
-                                title: 'Gagal',
+                                title: 'Error',
                                 text: 'Internal Server Error',
                                 type: 'error',
                                 showCancelButton: false,
@@ -244,8 +244,8 @@
             e.preventDefault();
             var form = this;
             Swal.fire({
-                title: 'Tunggu',
-                text: 'Apakah anda yakin akan mengubah user ?',
+                title: 'Wait...',
+                text: 'Are you sure you want to update this data ?',
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -262,7 +262,7 @@
                         success : function(response) {
                             if (response.code == 200) {
                                 Swal.fire({
-                                    title: 'Berhasil',
+                                    title: 'Success',
                                     text: response.message,
                                     type: 'success',
                                     showCancelButton: false,
@@ -278,7 +278,7 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    title: 'Gagal',
+                                    title: 'Failed',
                                     text: response.message,
                                     type: 'error',
                                     showCancelButton: false,
@@ -290,7 +290,7 @@
                         },
                         error : function(error) {
                             Swal.fire({
-                                title: 'Gagal',
+                                title: 'Error',
                                 text: 'Internal Server Error',
                                 type: 'error',
                                 showCancelButton: false,
@@ -310,8 +310,8 @@
             var data = table.rows($(this).parents('tr')).data();
             var uuid = data[0].uuid;
             Swal.fire({
-                title: 'Tunggu',
-                text: 'Apakah anda yakin ingin menghapus data ini ?',
+                title: 'Wait...',
+                text: 'Are you sure you want to delete this data ?',
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -328,7 +328,7 @@
                         success : function(response) {
                             if (response.code == 200) {
                                 Swal.fire({
-                                    title: 'Berhasil',
+                                    title: 'Success',
                                     text: response.message,
                                     type: 'success',
                                     showCancelButton: false,
@@ -342,7 +342,7 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    title: 'Gagal',
+                                    title: 'Failed',
                                     text: response.message,
                                     type: 'error',
                                     showCancelButton: false,
@@ -354,7 +354,7 @@
                         },
                         error : function(error) {
                             Swal.fire({
-                                title: 'Gagal',
+                                title: 'Error',
                                 text: 'Internal Server Error',
                                 type: 'error',
                                 showCancelButton: false,
@@ -380,8 +380,8 @@
             e.preventDefault();
             var form = this;
             Swal.fire({
-                title: 'Tunggu',
-                text: 'Apakah anda yakin akan merubah password ?',
+                title: 'Wait...',
+                text: 'Are you sure you want to reset password this user ?',
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -398,7 +398,7 @@
                         success : function(response) {
                             if (response.code == 200) {
                                 Swal.fire({
-                                    title: 'Berhasil',
+                                    title: 'Success',
                                     text: response.message,
                                     type: 'success',
                                     showCancelButton: false,
@@ -414,7 +414,7 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    title: 'Gagal',
+                                    title: 'Failed',
                                     text: response.message,
                                     type: 'error',
                                     showCancelButton: false,
@@ -426,7 +426,7 @@
                         },
                         error : function(error) {
                             Swal.fire({
-                                title: 'Gagal',
+                                title: 'Error',
                                 text: 'Internal Server Error',
                                 type: 'error',
                                 showCancelButton: false,
