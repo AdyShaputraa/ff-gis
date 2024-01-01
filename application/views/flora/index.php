@@ -9,7 +9,6 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-                            <li class="breadcrumb-item">Master Data</li>
                             <li class="breadcrumb-item active">Flora</li>
                         </ol>
                     </div>
@@ -34,17 +33,28 @@
                                 <th>No</th>
                                 <th>UUID</th>
                                 <th>Name</th>
+                                <th>Local Name</th>
+                                <th>Domain UUID</th>
+                                <th>Domain</th>
+                                <th>Kingdom UUID</th>
+                                <th>Kingdom</th>
+                                <th>Division UUID</th>
+                                <th>Division</th>
+                                <th>Class UUID</th>
                                 <th>Class</th>
+                                <th>Ordo UUID</th>
+                                <th>Ordo</th>
+                                <th>Familia UUID</th>
+                                <th>Familia</th>
+                                <th>Genus UUID</th>
+                                <th>Genus</th>
+                                <th>Spesies UUID</th>
+                                <th>Spesies</th>
                                 <th>Description</th>
                                 <th>Description Detail</th>
-                                <th>Conservation Type</th>
-                                <th>Conservation At</th>
-                                <th>Conservation Date</th>
-                                <th>Population</th>
-                                <th>IUCN Status</th>
-                                <th>Location</th>
-                                <th>Latitude</th>
-                                <th>Longtitude</th>
+                                <th>Status</th>
+                                <th>Protection Status</th>
+                                <th>Total Population</th>
                                 <th>Icon</th>
                                 <th>Image</th>
                                 <th>Action</th>
@@ -66,18 +76,109 @@
                     </div>
                     <form action="<?= base_url('Flora/create') ?>" method="post" class="formCreate" enctype="multipart/form-data">
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control create-name" placeholder="Enter Name" required>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control create-name" placeholder="Enter Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Local Name</label>
+                                        <input type="text" name="name_local" class="form-control create-name-local" placeholder="Enter Local Name" required>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Class</label>
-                                <select name="class" class="form-control create-class select2" style="width: 100%;" required>
-                                    <option value="" selected disabled>Select Once</option>
-                                    <option value="Asiatis">Asiatis</option>
-                                    <option value="Wallace">Wallace</option>
-                                    <option value="Australiatik">Australiatik</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Domain</label>
+                                        <select name="domain" class="form-control create-domain select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_domain as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Kingdom</label>
+                                        <select name="kingdom" class="form-control create-kingdom select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_kingdom as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Division</label>
+                                        <select name="division" class="form-control create-division select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_division as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Class</label>
+                                        <select name="class" class="form-control create-class select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_class as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Ordo</label>
+                                        <select name="ordo" class="form-control create-ordo select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_ordo as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Familia</label>
+                                        <select name="familia" class="form-control create-familia select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_familia as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Genus</label>
+                                        <select name="genus" class="form-control create-genus select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_genus as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Spesies</label>
+                                        <select name="spesies" class="form-control create-spesies select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_spesies as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
@@ -94,51 +195,32 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4">
-                                    <div class="form-group">
-                                        <label>Conservation Type</label>
-                                        <input type="text" name="conservation_type" class="form-control create-conservation-type" placeholder="Enter Conservation Type">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4">
-                                    <div class="form-group">
-                                        <label>Conservation At</label>
-                                        <input type="text" name="conservation_at" class="form-control create-conservation-at" placeholder="Enter Conservation At">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4">
-                                    <div class="form-group">
-                                        <label>Conservation Date</label>
-                                        <input type="date" name="conservation_date" class="form-control create-conservation-date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>IUCN Status</label>
-                                <select name="status_iucn" class="form-control create-status-iucn select2" style="width: 100%;" required>
-                                    <option value="" selected disabled>Select Once</option>
-                                    <option value="Dilindungi">Dilindungi</option>
-                                    <option value="Tidak Dilindungi">Tidak Dilindungi</option>
-                                    <option value="Least Concern">Least Concern</option>
-                                    <option value="Near Threatned">Near Threatned</option>
-                                    <option value="Vulnerable">Vulnerable</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Location</label>
-                                <input type="text" name="location" class="form-control create-location" placeholder="Enter Population">
-                            </div>
-                            <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label>Latitude</label>
-                                        <input type="text" name="latitude" class="form-control create-latitude" placeholder="Enter latitude" required>
+                                        <label>Status</label>
+                                        <select name="status" class="form-control create-status select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <option value="Extinct (EX)" title="Extinct (EX) - No known living individuals">Extinct (EX)</option>
+                                            <option value="Extinct in the wild (EW)" title="Extinct in the wild (EW) - Known only to survive in captivity, or as a naturalized population outside its historic range">Extinct in the wild (EW)</option>
+                                            <option value="Critically Endangered (CR)" title="Critically Endangered (CR) - Highest risk of extinction in the wild">Critically Endangered (CR)</option>
+                                            <option value="Endangered (EN)" title="Endangered (EN) - Higher risk of extinction in the wild">Endangered (EN)</option>
+                                            <option value="Vulnerable (VU)" title="Vulnerable (VU) - High risk of extinction in the wild">Vulnerable (VU)</option>
+                                            <option value="Near Threatened (NT)" title="Near Threatened (NT) - Likely to become endangered in the near future">Near Threatened (NT)</option>
+                                            <option value="Conservation Dependent (CD)" title="Conservation Dependent (CD) - Low risk; is conserved to prevent being near threatened, certain events may lead it to being a higher risk level">Conservation Dependent (CD)</option>
+                                            <option value="Least concern (LC)" title="Least concern (LC) - Very Low risk; does not qualify for a higher risk category and not likely to be threatened in the near future. Widespread and abundant taxa are included in this category.">Least concern (LC)</option>
+                                            <option value="Data deficient (DD)" title="Data deficient (DD) - Not enough data to make an assessment of its risk of extinction">Data deficient (DD)</option>
+                                            <option value="Not evaluated (NE)" title="Not evaluated (NE) - Has not yet been evaluated against the criteria.">Not evaluated (NE)</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label>Longtitude</label>
-                                        <input type="text" name="longtitude" class="form-control create-longtitude" placeholder="Enter longtitude" required>
+                                        <label>Protection Status</label>
+                                        <select name="status_perlindungan" class="form-control create-status-perlindungan select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <option value="Dilindungi">Dilindungi</option>
+                                            <option value="Tidak Dilindungi">Tidak Dilindungi</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -170,20 +252,111 @@
                         </button>
                     </div>
                     <form action="<?= base_url('Flora/update') ?>" method="post" class="formUpdate" enctype="multipart/form-data">
-                    <div class="modal-body">
+                        <div class="modal-body">
                             <input type="hidden" name="uuid" class="update-uuid">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control update-name" placeholder="Enter Name" required>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control update-name" placeholder="Enter Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Local Name</label>
+                                        <input type="text" name="name_local" class="form-control update-name-local" placeholder="Enter Local Name" required>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Class</label>
-                                <select name="class" class="form-control update-class select2" style="width: 100%;" required>
-                                    <option value="" selected disabled>Select Once</option>
-                                    <option value="Asiatis">Asiatis</option>
-                                    <option value="Wallace">Wallace</option>
-                                    <option value="Australiatik">Australiatik</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Domain</label>
+                                        <select name="domain" class="form-control update-domain select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_domain as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Kingdom</label>
+                                        <select name="kingdom" class="form-control update-kingdom select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_kingdom as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Division</label>
+                                        <select name="division" class="form-control update-division select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_division as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Class</label>
+                                        <select name="class" class="form-control update-class select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_class as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Ordo</label>
+                                        <select name="ordo" class="form-control update-ordo select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_ordo as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <label>Familia</label>
+                                        <select name="familia" class="form-control update-familia select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_familia as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Genus</label>
+                                        <select name="genus" class="form-control update-genus select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_genus as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Spesies</label>
+                                        <select name="spesies" class="form-control update-spesies select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($flora_spesies as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
@@ -200,51 +373,32 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4">
-                                    <div class="form-group">
-                                        <label>Conservation Type</label>
-                                        <input type="text" name="conservation_type" class="form-control update-conservation-type" placeholder="Enter Conservation Type">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4">
-                                    <div class="form-group">
-                                        <label>Conservation At</label>
-                                        <input type="text" name="conservation_at" class="form-control update-conservation-at" placeholder="Enter Conservation At">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4">
-                                    <div class="form-group">
-                                        <label>Conservation Date</label>
-                                        <input type="date" name="conservation_date" class="form-control update-conservation-date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>IUCN Status</label>
-                                <select name="status_iucn" class="form-control update-status-iucn select2" style="width: 100%;" required>
-                                    <option value="" selected disabled>Select Once</option>
-                                    <option value="Dilindungi">Dilindungi</option>
-                                    <option value="Tidak Dilindungi">Tidak Dilindungi</option>
-                                    <option value="Least Concern">Least Concern</option>
-                                    <option value="Near Threatned">Near Threatned</option>
-                                    <option value="Vulnerable">Vulnerable</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Location</label>
-                                <input type="text" name="location" class="form-control update-location" placeholder="Enter Population">
-                            </div>
-                            <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label>Latitude</label>
-                                        <input type="text" name="latitude" class="form-control update-latitude" placeholder="Enter latitude" required>
+                                        <label>Status</label>
+                                        <select name="status" class="form-control update-status select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <option value="Extinct (EX)" title="Extinct (EX) - No known living individuals">Extinct (EX)</option>
+                                            <option value="Extinct in the wild (EW)" title="Extinct in the wild (EW) - Known only to survive in captivity, or as a naturalized population outside its historic range">Extinct in the wild (EW)</option>
+                                            <option value="Critically Endangered (CR)" title="Critically Endangered (CR) - Highest risk of extinction in the wild">Critically Endangered (CR)</option>
+                                            <option value="Endangered (EN)" title="Endangered (EN) - Higher risk of extinction in the wild">Endangered (EN)</option>
+                                            <option value="Vulnerable (VU)" title="Vulnerable (VU) - High risk of extinction in the wild">Vulnerable (VU)</option>
+                                            <option value="Near Threatened (NT)" title="Near Threatened (NT) - Likely to become endangered in the near future">Near Threatened (NT)</option>
+                                            <option value="Conservation Dependent (CD)" title="Conservation Dependent (CD) - Low risk; is conserved to prevent being near threatened, certain events may lead it to being a higher risk level">Conservation Dependent (CD)</option>
+                                            <option value="Least concern (LC)" title="Least concern (LC) - Very Low risk; does not qualify for a higher risk category and not likely to be threatened in the near future. Widespread and abundant taxa are included in this category.">Least concern (LC)</option>
+                                            <option value="Data deficient (DD)" title="Data deficient (DD) - Not enough data to make an assessment of its risk of extinction">Data deficient (DD)</option>
+                                            <option value="Not evaluated (NE)" title="Not evaluated (NE) - Has not yet been evaluated against the criteria.">Not evaluated (NE)</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label>Longtitude</label>
-                                        <input type="text" name="longtitude" class="form-control update-longtitude" placeholder="Enter longtitude" required>
+                                        <label>Protection Status</label>
+                                        <select name="status_perlindungan" class="form-control update-status-perlindungan select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <option value="Dilindungi">Dilindungi</option>
+                                            <option value="Tidak Dilindungi">Tidak Dilindungi</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -265,6 +419,40 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade modal-map-pin">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h4 class="modal-title">Map Pin</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="map-pin-flora-uuid">
+                        <table class="table table-bordered table-striped display nowrap table-coordinate" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>UUID</th>
+                                    <th>Provinces UUID</th>
+                                    <th>Provinces Name</th>
+                                    <th>Location Name</th>
+                                    <th>Latitude</th>
+                                    <th>Longtitude</th>
+                                    <th>Population</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <div class="modal fade modal-increase">
             <div class="modal-dialog modal-lg">
@@ -278,6 +466,37 @@
                     <form action="<?= base_url('Flora/increasePopulation') ?>" method="post" class="formIncrease">
                         <div class="modal-body">
                             <input type="hidden" name="flora_uuid" class="increase-uuid">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Provinces</label>
+                                        <select name="provinces" class="form-control increase-provinces select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($provinces as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Location Name</label>
+                                        <input type="text" name="name" class="form-control increase-location" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Latitude</label>
+                                        <input type="text" name="latitude" class="form-control increase-latitude" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Longtitude</label>
+                                        <input type="text" name="longtitude" class="form-control increase-longtitude" required>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Year</label>
                                 <input type="text" name="year" class="form-control increase-year" required>
@@ -307,7 +526,30 @@
                     </div>
                     <form action="<?= base_url('Flora/decreasePopulation') ?>" method="post" class="formDecrease">
                         <div class="modal-body">
-                            <input type="hidden" name="flora_uuid" class="decrease-uuid">
+                            <input type="hidden" name="uuid" class="decrease-uuid">
+                            <div class="form-group">
+                                <label>Provinces</label>
+                                <select name="provinces" class="form-control decrease-provinces select2" style="width: 100%;" required>
+                                    <option value="" selected disabled>Select Once</option>
+                                    <?php foreach($provinces as $value) { ?>
+                                        <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <select name="name" class="form-control decrease-location select2" style="width: 100%;" required>
+                                    <option value="" selected disabled>Select Once</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Latitude</label>
+                                <input type="text" class="form-control decrease-latitude" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Longtitude</label>
+                                <input type="text" class="form-control decrease-longtitude" readonly>
+                            </div>
                             <div class="form-group">
                                 <label>Year</label>
                                 <input type="text" name="year" class="form-control decrease-year" required>
@@ -316,7 +558,6 @@
                                 <label>Population</label>
                                 <input type="number" name="population" class="form-control decrease-population" placeholder="Enter Population" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
                             </div>
-
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -326,56 +567,49 @@
                 </div>
             </div>
         </div>
-
-        <div class="modal fade modal-view">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <h4 class="modal-title">Views Population</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" class="view-flora-uuid">
-                        <table class="table table-bordered table-striped display nowrap table-population" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>UUID</th>
-                                    <th>Year</th>
-                                    <th>Population</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         
-        <div class="modal fade modal-update-population">
+        <div class="modal fade modal-update-coordinate">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h4 class="modal-title">Form Update Population</h4>
+                        <h4 class="modal-title">Form Update Coordinate</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="<?= base_url('Flora/updatePopulation') ?>" method="post" class="formUpdatePopulation">
+                    <form action="<?= base_url('Flora/updateCoordinate') ?>" method="post" class="formUpdateCoordinate">
                         <div class="modal-body">
-                            <input type="hidden" name="uuid" class="update-population-uuid">
-                            <div class="form-group">
-                                <label>Year</label>
-                                <input type="text" name="year" class="form-control update-population-year" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Population</label>
-                                <input type="number" name="population" class="form-control update-population-population" placeholder="Enter Population" required>
+                            <input type="hidden" name="uuid" class="update-coordinate-uuid">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Provinces</label>
+                                        <select name="provinces" class="form-control update-coordinate-provinces select2" style="width: 100%;" required>
+                                            <option value="" selected disabled>Select Once</option>
+                                            <?php foreach($provinces as $value) { ?>
+                                                <option value="<?= $value->uuid; ?>"><?= $value->name; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Location Name</label>
+                                        <input type="text" name="name" class="form-control update-coordinate-location" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Latitude</label>
+                                        <input type="text" name="latitude" class="form-control update-coordinate-latitude" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Longtitude</label>
+                                        <input type="text" name="longtitude" class="form-control update-coordinate-longtitude" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -406,23 +640,28 @@
                 { "data" : "no", "sClass": "text-center" },
                 { "data" : 'uuid', "visible": false },
                 { "data" : "name", "sClass": "text-center" },
-                { "data" : "class", "sClass": "text-center" },
+                { "data" : "name_local", "sClass": "text-center" },
+                { "data" : "domain_uuid", "visible": false },
+                { "data" : "domain_name", "sClass": "text-center" },
+                { "data" : "kingdom_uuid", "visible": false },
+                { "data" : "kingdom_name", "sClass": "text-center" },
+                { "data" : "division_uuid", "visible": false },
+                { "data" : "division_name", "sClass": "text-center" },
+                { "data" : "class_uuid", "visible": false },
+                { "data" : "class_name", "sClass": "text-center" },
+                { "data" : "ordo_uuid", "visible": false },
+                { "data" : "ordo_name", "sClass": "text-center" },
+                { "data" : "familia_uuid", "visible": false },
+                { "data" : "familia_name", "sClass": "text-center" },
+                { "data" : "genus_uuid", "visible": false },
+                { "data" : "genus_name", "sClass": "text-center" },
+                { "data" : "spesies_uuid", "visible": false },
+                { "data" : "spesies_name", "sClass": "text-center" },
                 { "data" : "description", "sClass": "text-center" },
                 { "data" : "description_detail", "sClass": "text-center" },
-                { "data" : "conservation_type", "sClass": "text-center" },
-                { "data" : "conservation_at", "sClass": "text-center" },
-                {
-                    "data" : "conservation_date",
-                    "sClass": "text-center",
-                    render: function(data) {
-                        return moment(data).format('D MMMM YYYY');
-                    }
-                },
+                { "data" : "status", "sClass": "text-center" },
+                { "data" : "status_perlindungan", "sClass": "text-center" },
                 { "data" : "population", "sClass": "text-center" },
-                { "data" : "status_iucn", "sClass": "text-center" },
-                { "data" : "location", "sClass": "text-center" },
-                { "data" : "latitude", "sClass": "text-center" },
-                { "data" : "longtitude", "sClass": "text-center" },
                 {
                     "sClass": "text-center",
                     render : function (data, type, row) {
@@ -439,7 +678,7 @@
                     "data"    : null,
                     "sClass": "text-center",
                     render : function (data, type, row) {
-                        return "<a href='#' class='btn-view' title='Views Population'><i class='fas fa-eye'></i></a>&nbsp;<a href='#' class='btn-increase' title='Increase Population'><i class='fas fa-plus'></i></a>&nbsp;<a href='#' class='btn-decrease' title='Decrease Population'><i class='fas fa-minus'></i></a>&nbsp;<a href='#' class='btn-edit' title='Update Fauna'><i class='fas fa-pen'></i></a>&nbsp;<a href='#' class='btn-delete' title='Delete Fauna'><i class='fas fa-trash'></i></a>";
+                        return "<a href='#' class='btn-map-pin' title='Pin Coordinate'><i class='fas fa-map-pin'></i></a>&nbsp;<a href='#' class='btn-increase' title='Increase Population'><i class='fas fa-plus'></i></a>&nbsp;<a href='#' class='btn-decrease' title='Decrease Population'><i class='fas fa-minus'></i></a>&nbsp;<a href='#' class='btn-edit' title='Update Flora'><i class='fas fa-pen'></i></a>&nbsp;<a href='#' class='btn-delete' title='Delete Flora'><i class='fas fa-trash'></i></a>";
                     }
                 }
             ],
@@ -524,16 +763,19 @@
             $('.modal-update').modal('show');
             $('.update-uuid').val(data[0].uuid);
             $('.update-name').val(data[0].name);
-            $('.update-class').val(data[0].class).trigger('change');
+            $('.update-name-local').val(data[0].name_local);
+            $('.update-domain').val(data[0].domain_uuid).trigger('change');
+            $('.update-kingdom').val(data[0].kingdom_uuid).trigger('change');
+            $('.update-division').val(data[0].division_uuid).trigger('change');
+            $('.update-class').val(data[0].class_uuid).trigger('change');
+            $('.update-ordo').val(data[0].ordo_uuid).trigger('change');
+            $('.update-familia').val(data[0].familia_uuid).trigger('change');
+            $('.update-genus').val(data[0].genus_uuid).trigger('change');
+            $('.update-spesies').val(data[0].spesies_uuid).trigger('change');
             $('.update-description').val(data[0].description);
             $('.update-description-detail').val(data[0].description_detail);
-            $('.update-conservation-type').val(data[0].conservation_type);
-            $('.update-conservation-at').val(data[0].conservation_at);
-            $('.update-conservation-date').val(data[0].conservation_date);
-            $('.update-status-iucn').val(data[0].status_iucn).trigger('change');
-            $('.update-location').val(data[0].location);
-            $('.update-latitude').val(data[0].latitude);
-            $('.update-longtitude').val(data[0].longtitude);
+            $('.update-status').val(data[0].status).trigger('change');
+            $('.update-status-perlindungan').val(data[0].status_perlindungan).trigger('change');
         });
 
         $('.formUpdate').submit(function (e) {
@@ -610,7 +852,7 @@
             var uuid = data[0].uuid;
             Swal.fire({
                 title: 'Wait...',
-                text: 'Are you sure you want to add this data ?',
+                text: 'Are you sure you want to delete this data ?',
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -620,7 +862,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('Fauna/delete'); ?>",
+                        url: "<?= base_url('Flora/delete'); ?>",
                         type: 'POST',
                         dataType: 'JSON',
                         data : {'uuid' : uuid },
@@ -668,6 +910,55 @@
             })
         });
 
+        table.on('click', '.btn-map-pin', function(e) {
+            e.preventDefault();
+            var data = table.rows($(this).parents('tr')).data();
+            $('.modal-map-pin').modal('show');
+            $('.map-pin-flora-uuid').val(data[0].uuid);
+        });
+
+        $('.modal-map-pin').on('shown.bs.modal', function () {
+            var flora_uuid = $('.map-pin-flora-uuid').val();
+            var tableCoordinate = $('.table-coordinate').DataTable({
+                processing      : true,
+                serverSide      : true,
+                paging          : true,
+                info            : true,
+                scrollX         : true,
+                scrollCollapse  : true,
+                "ordering"      : false,
+                "ajax"          : {
+                    "url"       : "<?= base_url('Flora/readCoordinate'); ?>",
+                    "type"      : "POST",
+                    "data"      : { 'flora_uuid' : flora_uuid },
+                    "dataType"  : 'JSON',
+                },
+                "columns": [
+                    { "data" : "no", "sClass": "text-center" },
+                    { "data" : 'uuid', "visible": false },
+                    { "data" : 'provinces_uuid', "visible": false },
+                    { "data" : "provinces_name", "sClass": "text-center" },
+                    { "data" : "name", "sClass": "text-center" },
+                    { "data" : "latitude", "sClass": "text-center" },
+                    { "data" : "longtitude", "sClass": "text-center" },
+                    { "data" : "population", "sClass": "text-center" },
+                    { 
+                        "data"    : null,
+                        "sClass": "text-center",
+                        render : function (data, type, row) {
+                            return "<a href='#' class='btn-update-coordinate' title='Update Coordinate'><i class='fas fa-pen'></i></a>&nbsp;<a href='#' class='btn-delete-coordinate' title='Delete Coordinate'><i class='fas fa-trash'></i></a>";
+                        }
+                    }
+                ],
+            });
+            tableCoordinate.ajax.reload(null, false);
+            tableCoordinate.columns.adjust();
+        });
+
+        $('.modal-map-pin').on('hidden.bs.modal', function () {
+            $('.table-coordinate').DataTable().destroy();
+        });
+        
         $('.increase-year, .decrease-year').datepicker({
             minViewMode: 2,
             format: 'yyyy',
@@ -716,6 +1007,7 @@
                                 }).then((result) => {
                                     if (result.value) {
                                         $('.formIncrease')[0].reset();
+                                        $('.increase-provinces').val('').trigger('change');
                                         $('.modal-increase').modal('hide');
                                         table.ajax.reload(null, false);
                                     }
@@ -752,8 +1044,63 @@
         table.on('click', '.btn-decrease', function(e) {
             e.preventDefault();
             var data = table.rows($(this).parents('tr')).data();
+            var uuid = data[0].uuid;
             $('.modal-decrease').modal('show');
-            $('.decrease-uuid').val(data[0].uuid);
+            $('.decrease-uuid').val(uuid);
+        });
+
+        $('.decrease-provinces').on('change', function() {
+            var uuid = $(this).val();
+            $.ajax({
+                url: "<?= base_url('Flora/getCoordinateDataByProvinces'); ?>",
+                type: 'POST',
+                dataType: 'JSON',
+                data : { 'uuid' : uuid },
+                success : function(response) {
+                    if (response.code == 200) {
+                        if ($.trim(response.data)) {
+                            $('.decrease-location').empty();
+                            var data = [{'text' : 'Select Once', 'id' : ''}];
+                            $.each(response.data, function(key, value) {
+                                data.push({ 'text' : value.name, 'id' : value.uuid });
+                            });
+                            $('.decrease-location').select2({
+                                data: data
+                            });
+                            $('.decrease-location option[value=""]').prop('disabled', true);
+                        } else {
+                            $('.decrease-location').empty();
+                            var data = [{'text' : 'Select Once', 'id' : ''}];
+                            $('.decrease-location').select2({
+                                data: data
+                            });
+                            $('.decrease-location option[value=""]').prop('disabled', true);
+                            $('.decrease-latitude').val('');
+                            $('.decrease-longtitude').val('');
+                        }
+                    }       
+                },
+                error : function(error) {}
+            });
+        });
+
+        $('.decrease-location').on('change', function() {
+            var uuid = $(this).val();
+            $.ajax({
+                url: "<?= base_url('Flora/getCoordinateById'); ?>",
+                type: 'POST',
+                dataType: 'JSON',
+                data : { 'uuid' : uuid },
+                success : function(response) {
+                    if (response.code == 200) {
+                        if ($.trim(response.data[0])) {
+                            $('.decrease-latitude').val(response.data[0].latitude);
+                            $('.decrease-longtitude').val(response.data[0].longtitude);
+                        }
+                    }       
+                },
+                error : function(error) {}
+            });
         });
 
         $('.formDecrease').submit(function (e) {
@@ -823,66 +1170,24 @@
                 }  
             });
         });
-
-        table.on('click', '.btn-view', function(e) {
-            e.preventDefault();
-            var data = table.rows($(this).parents('tr')).data();
-            $('.modal-view').modal('show');
-            $('.view-flora-uuid').val(data[0].uuid);
-        });
-
-        $('.modal-view').on('shown.bs.modal', function () {
-            var flora_uuid = $('.view-flora-uuid').val();
-            var tablePopulation = $('.table-population').DataTable({
-                processing      : true,
-                serverSide      : true,
-                paging          : true,
-                info            : true,
-                scrollX         : true,
-                scrollCollapse  : true,
-                "ordering"      : false,
-                "ajax"          : {
-                    "url"       : "<?= base_url('Flora/readPopulation'); ?>",
-                    "type"      : "POST",
-                    "data"      : { 'flora_uuid' : flora_uuid },
-                    "dataType"  : 'JSON',
-                },
-                "columns": [
-                    { "data" : "no", "sClass": "text-center" },
-                    { "data" : 'uuid', "visible": false },
-                    { "data" : "year", "sClass": "text-center" },
-                    { "data" : "population", "sClass": "text-center" },
-                    { 
-                        "data"    : null,
-                        "sClass": "text-center",
-                        render : function (data, type, row) {
-                            return "<a href='#' class='btn-update-population' title='Update Population'><i class='fas fa-pen'></i></a>&nbsp;<a href='#' class='btn-delete-population' title='Delete Population'><i class='fas fa-trash'></i></a>";
-                        }
-                    }
-                ],
-            });
-            tablePopulation.columns.adjust();
-        });
-
-        $('.modal-view').on('hidden.bs.modal', function () {
-            $('.table-population').DataTable().destroy();
-        });
         
-        $('.table-population').on('click', '.btn-update-population', function(e) {
+        $('.table-coordinate').on('click', '.btn-update-coordinate', function(e) {
             e.preventDefault();
-            var data = $('.table-population').DataTable().rows($(this).parents('tr')).data();
-            $('.modal-update-population').modal('show');
-            $('.update-population-uuid').val(data[0].uuid);
-            $('.update-population-year').val(data[0].year);
-            $('.update-population-population').val(data[0].population);
+            var data = $('.table-coordinate').DataTable().rows($(this).parents('tr')).data();
+            $('.modal-update-coordinate').modal('show');
+            $('.update-coordinate-uuid').val(data[0].uuid);
+            $('.update-coordinate-provinces').val(data[0].provinces_uuid).trigger('change');
+            $('.update-coordinate-location').val(data[0].name);
+            $('.update-coordinate-latitude').val(data[0].latitude);
+            $('.update-coordinate-longtitude').val(data[0].longtitude);
         });
 
-        $('.formUpdatePopulation').submit(function (e) {
+        $('.formUpdateCoordinate').submit(function (e) {
             e.preventDefault();
             var form = new FormData(this);
             Swal.fire({
                 title: 'Wait...',
-                text: 'Are you sure you want to update the population ?',
+                text: 'Are you sure you want to update the coordinate ?',
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -911,10 +1216,10 @@
                                     allowOutsideClick: false
                                 }).then((result) => {
                                     if (result.value) {
-                                        $('.formUpdatePopulation')[0].reset();
-                                        $('.modal-update-population').modal('hide');
-                                        $('.table-population').DataTable().ajax.reload(null, false);
-                                        table.ajax.reload(null, false);
+                                        $('.formUpdateCoordinate')[0].reset();
+                                        $('.update-coordinate-provinces').val('').trigger('change');
+                                        $('.modal-update-coordinate').modal('hide');
+                                        $('.table-coordinate').DataTable().ajax.reload(null, false);
                                     }
                                 });
                             } else {
@@ -946,13 +1251,13 @@
             });
         });
 
-        $('.table-population').on('click', '.btn-delete-population', function(e) {
+        $('.table-coordinate').on('click', '.btn-delete-coordinate', function(e) {
             e.preventDefault();
-            var data = $('.table-population').DataTable().rows($(this).parents('tr')).data();
+            var data = $('.table-coordinate').DataTable().rows($(this).parents('tr')).data();
             var uuid = data[0].uuid;
             Swal.fire({
                 title: 'Wait...',
-                text: 'Are you sure you want to delete this data ?',
+                text: 'Are you sure you want to delete this coordinate ?',
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -962,7 +1267,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('Flora/deletePopulation'); ?>",
+                        url: "<?= base_url('Flora/deleteCoordinate'); ?>",
                         type: 'POST',
                         dataType: 'JSON',
                         data : {'uuid' : uuid },
@@ -978,7 +1283,7 @@
                                     allowOutsideClick: false
                                 }).then((result) => {
                                     if (result.value) {
-                                        $('.table-population').DataTable().ajax.reload(null, false);
+                                        $('.table-coordinate').DataTable().ajax.reload(null, false);
                                         table.ajax.reload(null, false);
                                     }
                                 });

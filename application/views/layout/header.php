@@ -97,17 +97,148 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('Type/fauna') ?>" class="nav-link">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-circle"></i>
+                                        <p>
+                                            Toxonomy
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon fas fa-circle"></i>
+                                                <p>
+                                                    Fauna
+                                                    <i class="right fas fa-angle-left"></i>
+                                                </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaDomain') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Domain</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaKingdom') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Kingdom</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaPhylum') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Phylum</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaClass') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Class</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaOrdo') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Ordo</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaFamilia') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Familia</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaGenus') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Genus</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/faunaSpesies') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Spesies</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon fas fa-database"></i>
+                                                <p>
+                                                    Flora
+                                                    <i class="right fas fa-angle-left"></i>
+                                                </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraDomain') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Domain</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraKingdom') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Kingdom</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraDivision') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Division</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraClass') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Class</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraOrdo') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Ordo</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraFamilia') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Familia</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraGenus') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Genus</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('Taxonomy/floraSpesies') ?>" class="nav-link">
+                                                        <i class="fas fa-circle nav-icon"></i>
+                                                        <p>Spesies</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a href="<?= base_url('Taxonomy/fauna') ?>" class="nav-link">
                                         <i class="fas fa-circle nav-icon"></i>
-                                        <p>Fauna Type</p>
+                                        <p>Fauna Taxonomy</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('Type/flora') ?>" class="nav-link">
+                                    <a href="<?= base_url('Taxonomy/flora') ?>" class="nav-link">
                                         <i class="fas fa-circle nav-icon"></i>
-                                        <p>Flora Type</p>
+                                        <p>Flora Taxonomy</p>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li class="nav-item">
