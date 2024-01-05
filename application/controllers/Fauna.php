@@ -570,6 +570,10 @@ class Fauna extends CI_Controller {
             WHERE provinces_uuid = "'.$provinces_uuid.'" AND flora_fauna_uuid = "'.$fauna_uuid.'" AND latitude = "'.$latitude.'" AND longtitude = "'.$longtitude.'"')->result();
             if (empty($getCoordinate)) {
                 $this->m_data->save($coordinate, 'coordinate');
+            } else {
+                foreach($getCoordinate as $value) {
+                    $coordinate_uuid = $value->uuid;
+                }
             }
 
             $faunaPopulation = array(

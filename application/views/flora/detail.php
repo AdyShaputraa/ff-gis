@@ -33,17 +33,25 @@
             </section>
 
             <?php
-                $uuid = ''; $name = '-'; $class = '-'; $image = '-'; $description = '-'; $description_detail = '-'; 
-                $conservation_at = '-'; $conservation_date = date('now'); $status_iucn = '';
+                $coordinate_uuid = $_coordinate_uuid; $flora_uuid = '-'; $name = '-'; $name_local = '-'; $description = '-'; $description_detail = '-';
+                $domain_name = '-'; $kingdom_name = '-'; $division_name = '-'; $class_name = '-'; $ordo_name = '-';
+                $familia_name = '-'; $genus_name = '-'; $spesies_name = '-'; $status = '-'; $status_perlindungan = '-'; $image = '-';
                 foreach ($flora as $value) {
-                    $uuid = $value->uuid; $name = $value->name; $class = $value->class; $image = $value->image; $description = $value->description;
-                    $description_detail = $value->description_detail; $conservation_at = $value->conservation_at; $conservation_date = $value->conservation_date;
-                    $status_iucn = $value->status_iucn;
+                    $flora_uuid = $value->uuid; $name = $value->name; $name_local = $value->name_local; $description = $value->description;
+                    $description_detail = $value->description_detail; $domain_name = $value->domain_name; $kingdom_name = $value->kingdom_name;
+                    $division_name = $value->division_name; $class_name = $value->class_name; $ordo_name = $value->ordo_name;
+                    $familia_name = $value->familia_name; $genus_name = $value->genus_name; $spesies_name = $value->spesies_name;
+                    $status = $value->status; $status_perlindungan = $value->status_perlindungan; $image = $value->image;
                 }
 
                 $population = 0;
                 foreach ($flora_population_count as $value) {
                     $population = $value->population;
+                }
+
+                $provinces_name = '-'; $location_name = '-'; $latitude = '-'; $longtitude = '-';
+                foreach ($flora_coordinate as $value) {
+                    $provinces_name = $value->provinces_name; $location_name = $value->location_name; $latitude = $value->latitude; $longtitude = $value->longtitude;
                 }
             ?>
 
@@ -52,72 +60,146 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-6">
-                                <h3 class="d-inline-block d-sm-none"><?= $name; ?></h3>
+                                <!-- <h3 class="d-inline-block d-sm-none"><?= $name; ?></h3> -->
                                 <div class="col-12">
                                     <img src="<?= $image; ?>" class="product-image" alt="Flora Image">
                                 </div>
+                                <div class="row mt-4">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="small-box bg-default">
+                                            <div class="inner text-center">
+                                                <h5><?= $status; ?></h5>
+                                                <p>IUCN Status</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="small-box bg-default">
+                                            <div class="inner text-center">
+                                                <h5><?= $status_perlindungan; ?></h5>
+                                                <p>Status</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <h3 class="my-3"><?= $name; ?> &nbsp;<span class="h6"><?= $class; ?></span></h3>
+                                <h3 class="my-3"><?= $name; ?> &nbsp;<span class="h6"><?= $name_local; ?></span></h3>
                                 <p><?= $description; ?></p>
                                 <hr>
                                 <?= $description_detail ?>
                                 <hr>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-sm-3">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $domain_name; ?></h5>
+                                            <p>Domain</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $kingdom_name; ?></h5>
+                                            <p>Kingdom</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $division_name; ?></h5>
+                                            <p>Division</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $class_name; ?></h5>
+                                            <p>Class</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $ordo_name; ?></h5>
+                                            <p>Ordo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $familia_name; ?></h5>
+                                            <p>Familia</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $genus_name; ?></h5>
+                                            <p>Genus</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="small-box bg-success">
+                                        <div class="inner text-center">
+                                            <h5><?= $spesies_name; ?></h5>
+                                            <p>Spesies</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="small-box bg-default">
-                                            <div class="inner text-center">
-                                                <h3><?= $population; ?></h3>
-                                                <p>Total Populasi</p>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="small-box bg-default">
+                                                    <div class="inner text-center">
+                                                        <h3><?= $population; ?></h3>
+                                                        <p>Total Populasi</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="small-box bg-default">
+                                                    <div class="inner text-center">
+                                                        <h3><i class="fas fa-map-pin"></i></h3>
+                                                        <p><?= $provinces_name; ?></p>
+                                                        <p><?= $location_name; ?></p>
+                                                        <p><?= 'Latitude: '. $latitude.', Longtitude: '.$longtitude; ?></p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                         <div class="small-box bg-default">
                                             <div class="inner text-center">
                                                 <canvas id="line-chart-canvas" height="300" style="height: 300px;"></canvas>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-sm-4">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="small-box bg-default">
-                                        <div class="inner text-center">
-                                            <h3><i class="fas fa-map-pin"></i></h3>
-                                            <p><?= $conservation_at; ?></p>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Maps</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div id="mapid"></div>
+                                            </div>
+                                            <div class="card-footer"></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="small-box bg-default">
-                                        <div class="inner text-center">
-                                            <h3><i class="fas fa-calendar"></i></h3>
-                                            <p><?= date('d F Y', strtotime($conservation_date)); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="small-box bg-default">
-                                        <div class="inner text-center">
-                                            <h3><?= $status_iucn; ?></h3>
-                                            <p>IUCN Status</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Maps</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="mapid"></div>
-                                    </div>
-                                    <div class="card-footer"></div>
                                 </div>
                             </div>
                         </div>
@@ -141,11 +223,13 @@
         $(document).ready(function() {
             chart(); getMaps();
             function chart() {
-                var uuid = '<?= $uuid ?>';
+                var coordinate_uuid = '<?= $_coordinate_uuid ?>';
+                var flora_uuid = '<?= $flora_uuid ?>';
+                
                 $.ajax({
                     url: '<?= base_url("Detail/floraGrafikData"); ?>',
                     type: 'POST',
-                    data: { 'uuid' : uuid },
+                    data: { 'coordinate_uuid' : coordinate_uuid, 'flora_uuid' : flora_uuid },
                     dataType: 'JSON',
                     success : function(response) {
                         var lineChartCanvas = document.getElementById('line-chart-canvas');
@@ -192,7 +276,7 @@
             }
             
             function getMaps() {
-                var uuid = '<?= $uuid ?>';
+                var uuid = '<?= $_coordinate_uuid ?>';
                 var map = L.map('mapid', {
                     minZoom: 7,
                     maxZoom: 13
@@ -217,24 +301,32 @@
                 });
 
                 $.ajax({
-                    url: '<?= base_url("Detail/mappingFlora"); ?>',
+                    url: "<?= base_url('Detail/getMaps'); ?>",
                     type: 'POST',
-                    data: { 'uuid' : uuid },
                     dataType: 'JSON',
+                    data : { 'uuid' : uuid },
                     success : function(response) {
-                        $.each(response, function(i, field) {
-                            var latitude = parseFloat(response[i].latitude);
-                            var longtitude = parseFloat(response[i].longtitude);
-                            var url = '<?= base_url('Detail/flora/') ?>' + response[i].uuid;
-                            var image = response[i].image;
+                        $.each(response, function(key, value) {
+                            var latitude = parseFloat(value.latitude);
+                            var longtitude = parseFloat(value.longtitude);
+                            if (value.type == 'Fauna') {
+                                var url = '<?= base_url('Detail/fauna/') ?>' + value.coordinate_uuid;
+                            } else if (value.type == 'Flora') {
+                                var url = '<?= base_url('Detail/flora/') ?>' + value.coordinate_uuid;
+                            }
+                            var image = value.image;
                             var icon = L.icon({
-                                iconUrl: response[i].icon,
+                                iconUrl: value.icon,
                                 iconSize: [50,50]
                             });
                             var detail = "<img src='"+ image + "' style='width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;'>";
-                                detail += "<br/><span style='font-size: 23px;'><b>" + response[i].name + "</b></span>";
-                                detail += "<hr><span>" + response[i].description + "</span>";
-                                detail += "<br/><br/>Location : <b>" + response[i].location + "</b>";
+                                detail += "<br/><span style='font-size: 23px;'><b>" + value.local_name + "</b>&nbsp;<sub>" + value.name + "</sub></span>";
+                                detail += "<hr><span>" + value.description + "</span>";
+                                detail += "<br/><br/>Provinces : <b>" + value.provinces_name + "</b>";
+                                detail += "<br/>Location : <b>" + value.location_name + "</b>";
+                                detail += "<br/>Total Population : <b>" + value.population + "</b>";
+                                detail += "<br/>IUCN Status : <b>" + value.iucn_status + "</b>";
+                                detail += "<br/>Status : <b>" + value.status + "</b>";
                                 logMarker = L.marker([latitude, longtitude],{ icon: icon}).addTo(myFeatureGroup).bindPopup(detail);
                                 logMarker.on('mouseover', function(e) {
                                     this.openPopup();
@@ -244,9 +336,20 @@
                                     this.openPopup();
                                 });
 
-                                logMarker.id = response[i].uuid;
+                                logMarker.id = value.uuid;
                         });
-
+                    },
+                    error : function(error) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Maps error',
+                            type: 'error',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'OK',
+                            allowOutsideClick: false
+                        });
                     }
                 });
 
