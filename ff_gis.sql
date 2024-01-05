@@ -228,9 +228,12 @@ CREATE TABLE `fauna_population` (
 /*Data for the table `fauna_population` */
 
 insert  into `fauna_population`(`uuid`,`fauna_uuid`,`coordinate_uuid`,`year`,`population`) values 
+('035e5a79-cda6-49bb-90c3-349fbf05805c','336ff7a5-5ff9-4cb3-aef3-6a25573e6779','6870a025-326f-4052-8c59-8ae68b307a7c',2017,5),
+('219619bf-2137-42f0-8fa6-cb69524d6493','336ff7a5-5ff9-4cb3-aef3-6a25573e6779','6870a025-326f-4052-8c59-8ae68b307a7c',2018,13),
 ('3d820e62-3bd6-4d70-8e45-4c12891592e6','336ff7a5-5ff9-4cb3-aef3-6a25573e6779','708f14ed-be62-4c03-a42f-774bcaf7ecb1',2007,32),
 ('45de03d2-72e6-4878-9231-a3468d51260a','336ff7a5-5ff9-4cb3-aef3-6a25573e6779','6870a025-326f-4052-8c59-8ae68b307a7c',2015,15),
-('af7db570-555a-4679-aa8a-ad665bcd7ea4','336ff7a5-5ff9-4cb3-aef3-6a25573e6779','708f14ed-be62-4c03-a42f-774bcaf7ecb1',2024,-2);
+('af7db570-555a-4679-aa8a-ad665bcd7ea4','336ff7a5-5ff9-4cb3-aef3-6a25573e6779','708f14ed-be62-4c03-a42f-774bcaf7ecb1',2024,-2),
+('d5bf2647-5066-4734-bbbd-2e39321805ec','336ff7a5-5ff9-4cb3-aef3-6a25573e6779','6870a025-326f-4052-8c59-8ae68b307a7c',2016,2);
 
 /*Table structure for table `fauna_spesies` */
 
